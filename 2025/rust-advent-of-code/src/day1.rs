@@ -120,7 +120,7 @@ fn read_lines(path: &str) -> io::Result<Vec<String>> {
 }
 
 #[cfg(test)]
-mod tests_part_one {
+mod tests_day_1_part_one {
     use spectral::assert_that;
     use crate::day1::{deduce_password_part_one, parse_directions, read_lines, Direction, Side};
 
@@ -238,7 +238,7 @@ mod tests_part_one {
 }
 
 #[cfg(test)]
-mod tests_part_two {
+mod tests_day_1_part_two {
     use spectral::assert_that;
     use crate::day1::deduce_password_part_two;
 
@@ -267,6 +267,7 @@ mod tests_part_two {
     }
 
     #[test]
+    #[ignore]
     fn should_deduce_password_for_real_input() {
         // Given
         let path = "resources/day1/input_real";

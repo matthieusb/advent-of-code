@@ -35,7 +35,7 @@ fn deduce_password_part_one(path: &str) -> i32 {
 
     for direction in directions {
         let offset = position + (direction.distance() % 100);
-        let mut new_position = 0;
+        let mut new_position: i32 = 0;
 
         if offset < 0 {
             new_position = 100 + offset
@@ -79,6 +79,14 @@ fn deduce_password_part_two(path: &str) -> i32 {
 
         if (offset < 0 || offset > 100) && new_position != 0 && position != 0 {
             times_pointed_at_zero += 1;
+        }
+
+        if direction.distance > 100 {
+            times_pointed_at_zero += direction.distance / 100;
+
+            if new_position == 0 && direction.distance / 100 > 0 {
+                times_pointed_at_zero -= 1
+            }
         }
 
         position = new_position;
@@ -255,7 +263,7 @@ mod tests_part_two {
         let password = deduce_password_part_two(path);
 
         // Then
-        assert_that(&password).is_equal_to(&13);
+        assert_that(&password).is_equal_to(&15);
     }
 
     #[test]
@@ -267,6 +275,7 @@ mod tests_part_two {
         let password = deduce_password_part_two(path);
 
         // Then
+        // TODO The result we got is 6259, but it seems to be incorrect, so we let this test fail
         assert_that(&password).is_equal_to(&0);
     }
 }

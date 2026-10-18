@@ -1,0 +1,7 @@
+[package]
+name = "rust-advent-of-code"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+spectral = "=0.6.0"
